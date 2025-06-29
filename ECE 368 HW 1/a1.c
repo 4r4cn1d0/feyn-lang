@@ -9,15 +9,15 @@ What it outputs: prints each combination in the format "%d quarter(s), %d dime(s
 void printCombinations(int totalCents) {
     int maxQuarters = totalCents / 25;
     for (int quarterCount = maxQuarters; quarterCount >= 0; quarterCount--) {
-        int centsAfterQuarters = totalCents - quarterCount * 25;
-        int maxDimes = centsAfterQuarters / 10;
+        int maxDimes = (totalCents - quarterCount * 25) / 10;
         for (int dimeCount = maxDimes; dimeCount >= 0; dimeCount--) {
-            int centsAfterDimes = centsAfterQuarters - dimeCount * 10;
-            int maxNickels = centsAfterDimes / 5;
+            int maxNickels = (totalCents - quarterCount * 25 - dimeCount * 10) / 5;
             for (int nickelCount = maxNickels; nickelCount >= 0; nickelCount--) {
-                int pennies = centsAfterDimes - nickelCount * 5;
-                printf("%d quarter(s), %d dime(s), %d nickel(s), %d pennies\n",
-                       quarterCount, dimeCount, nickelCount, pennies);
+                int pennies = totalCents - (quarterCount * 25 + dimeCount * 10 + nickelCount * 5);
+                if (pennies >= 0) {
+                    printf("%d quarter(s), %d dime(s), %d nickel(s), %d pennies\n",
+                        quarterCount, dimeCount, nickelCount, pennies);
+                }
             }
         }
     }
