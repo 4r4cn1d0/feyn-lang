@@ -7,17 +7,12 @@ What it does: enumerates and prints all combinations of quarters, dimes, nickels
 What it outputs: prints each combination in the format "%d quarter(s), %d dime(s), %d nickel(s), %d pennies\n"
 *******/
 void printCombinations(int totalCents) {
-    int maxQuarters = totalCents / 25;
-    for (int quarterCount = maxQuarters; quarterCount >= 0; quarterCount--) {
-        int maxDimes = (totalCents - quarterCount * 25) / 10;
-        for (int dimeCount = maxDimes; dimeCount >= 0; dimeCount--) {
-            int maxNickels = (totalCents - quarterCount * 25 - dimeCount * 10) / 5;
-            for (int nickelCount = maxNickels; nickelCount >= 0; nickelCount--) {
-                int pennies = totalCents - (quarterCount * 25 + dimeCount * 10 + nickelCount * 5);
-                if (pennies >= 0) {
-                    printf("%d quarter(s), %d dime(s), %d nickel(s), %d pennies\n",
-                        quarterCount, dimeCount, nickelCount, pennies);
-                }
+    for (int quarterCount = totalCents / 25; quarterCount >= 0; quarterCount--) {
+        for (int dimeCount = (totalCents - quarterCount * 25) / 10; dimeCount >= 0; dimeCount--) {
+            for (int nickelCount = (totalCents - quarterCount * 25 - dimeCount * 10) / 5; nickelCount >= 0; nickelCount--) {
+                int pennies = totalCents - quarterCount * 25 - dimeCount * 10 - nickelCount * 5;
+                printf("%d quarter(s), %d dime(s), %d nickel(s), %d pennies\n",
+                       quarterCount, dimeCount, nickelCount, pennies);
             }
         }
     }
