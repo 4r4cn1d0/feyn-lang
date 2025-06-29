@@ -16,7 +16,7 @@ void printCombinations(int totalCents) {
             int maxNickels = centsAfterDimes / 5;
             for (int nickelCount = maxNickels; nickelCount >= 0; nickelCount--) {
                 int pennies = centsAfterDimes - nickelCount * 5;
-                printf("%d quarter(s), %d dime(s), %d nickel(s), %d pennie(s)\n",
+                printf("%d quarter(s), %d dime(s), %d nickel(s), %d pennies\n",
                        quarterCount, dimeCount, nickelCount, pennies);
             }
         }
