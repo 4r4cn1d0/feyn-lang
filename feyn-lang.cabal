@@ -1,0 +1,92 @@
+cabal-version:      3.0
+name:               feyn-lang
+version:            0.1.0.0
+license:            MIT
+author:             Feyn Language Team
+maintainer:         feyn@example.com
+homepage:           https://github.com/your-username/feyn-lang
+bug-reports:        https://github.com/your-username/feyn-lang/issues
+synopsis:           Quantum-Inspired Differentiable Probabilistic DSL
+description:        A unified programming language that seamlessly combines quantum computing, differentiable programming, and probabilistic programming paradigms.
+category:           Language
+build-depends:
+    base ^>=4.16.0.0,
+    text ^>=1.2,
+    vector ^>=0.12,
+    containers ^>=0.6,
+    mtl ^>=2.3,
+    transformers ^>=0.6,
+    megaparsec ^>=9.0,
+    prettyprinter ^>=1.7,
+    random ^>=1.2,
+    scientific ^>=0.3,
+    aeson ^>=2.0,
+    bytestring ^>=0.11,
+    directory ^>=1.3,
+    filepath ^>=1.4,
+    time ^>=1.12,
+    unix-compat ^>=0.6
+
+default-language:   Haskell2010
+default-extensions: 
+    GADTs,
+    DataKinds,
+    KindSignatures,
+    TypeOperators,
+    FlexibleContexts,
+    PolyKinds,
+    OverloadedStrings,
+    DeriveGeneric,
+    DeriveFunctor,
+    DeriveFoldable,
+    DeriveTraversable
+
+executable feyn
+    main-is:             Main.hs
+    hs-source-dirs:      app, src
+    other-modules:       Feyn, Parser
+    build-depends:       base,
+                        text,
+                        vector,
+                        containers,
+                        mtl,
+                        transformers,
+                        random,
+                        megaparsec,
+                        parser-combinators,
+                        time
+    default-language:    Haskell2010
+
+executable test-core
+    main-is:             TestCore.hs
+    hs-source-dirs:      app, src
+    other-modules:       Feyn, Parser
+    build-depends:       base,
+                        text,
+                        vector,
+                        containers,
+                        mtl,
+                        transformers,
+                        random,
+                        megaparsec,
+                        parser-combinators,
+                        time
+    default-language:    Haskell2010
+
+test-suite feyn-tests
+    type:                exitcode-stdio-1.0
+    main-is:             Spec.hs
+    hs-source-dirs:      test, src
+    other-modules:       Feyn, Parser
+    build-depends:       base,
+                        hspec ^>=2.10,
+                        QuickCheck ^>=2.14,
+                        text,
+                        vector,
+                        containers,
+                        mtl,
+                        transformers,
+                        random,
+                        megaparsec,
+                        parser-combinators
+    default-language:    Haskell2010

@@ -1,0 +1,81 @@
+-- Probabilistic Quantum Circuits Example
+-- Demonstrates quantum measurement with uncertainty modeling
+
+-- Probabilistic quantum measurement
+let q = qubit(0.4) in
+let hq = hadamard(q) in
+
+-- Multiple measurements to show probabilistic nature
+let m1 = measure(hq) in
+let m2 = measure(hq) in
+let m3 = measure(hq) in
+let m4 = measure(hq) in
+let m5 = measure(hq) in
+
+-- Create distribution from measurement
+let avg_measurement = (m1 + m2 + m3 + m4 + m5) / 5.0 in
+let measurement_dist = dist(avg_measurement) in
+
+print("Initial quantum state: ");
+print(q);
+print("After Hadamard gate: ");
+print(hq);
+print("Multiple measurements (showing randomness):");
+print(m1);
+print(m2);
+print(m3);
+print(m4);
+print(m5);
+print("Measurement distribution: ");
+print(measurement_dist);
+
+-- Quantum circuit with uncertainty
+let q1 = qubit(0.3) in
+let q2 = qubit(0.7) in
+
+-- Quantum operations
+let hq1 = hadamard(q1) in
+let hq2 = hadamard(q2) in
+
+-- Measurements
+let measurement1 = measure(hq1) in
+let measurement2 = measure(hq2) in
+
+-- Create probabilistic model
+let combined = tensor[measurement1, measurement2] in
+let combined_dist = dist(combined) in
+
+-- Sample from the distribution
+let sample1 = sample(combined_dist) in
+let sample2 = sample(combined_dist) in
+
+print("Measurement 1: ");
+print(measurement1);
+print("Measurement 2: ");
+print(measurement2);
+print("Probabilistic sample 1: ");
+print(sample1);
+print("Probabilistic sample 2: ");
+print(sample2);
+
+-- Bayesian quantum inference
+let prior_q = qubit(0.5) in
+let evidence = measure(prior_q) in
+
+-- Update belief based on evidence
+let updated_q = qubit(evidence * 0.8) in
+
+-- Create posterior distribution
+let posterior_dist = dist(updated_q) in
+let posterior_sample = sample(posterior_dist) in
+
+print("Prior quantum state: ");
+print(prior_q);
+print("Evidence (measurement): ");
+print(evidence);
+print("Updated quantum state: ");
+print(updated_q);
+print("Posterior distribution: ");
+print(posterior_dist);
+print("Posterior sample: ");
+print(posterior_sample)
