@@ -451,12 +451,6 @@ print("π estimate:", pi_estimate)
 
 ## 🤝 Contributing
 
-### Development Guidelines
-1. **Code Style**: Follow academic coding standards
-2. **Documentation**: Comprehensive comments for all functions
-3. **Testing**: Ensure all new features have corresponding tests
-4. **Performance**: Benchmark new implementations against existing code
-
 ### Areas for Improvement
 - **Reverse-mode Autodiff**: Implement general gradient computation
 - **Quantum Error Correction**: Add error correction codes
